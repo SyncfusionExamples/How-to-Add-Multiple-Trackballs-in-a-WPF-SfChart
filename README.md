@@ -128,5 +128,9 @@ private ChartTrackBallBehavior FindNearestTrackball(Point touchPoint)
 
 **Step 7:** To control the trackballs, simply hover over them with your mouse. As you move the mouse within the chart area, the trackball will follow the cursor, allowing you to inspect different data points interactively.
 
-For a complete example of this implementation, you can refer to the sample project on GitHub [here](https://github.com/SyncfusionExamples/How-to-Add-Multiple-Trackballs-in-a-WPF-SfChart). This sample demonstrates how to add and interact with multiple trackballs in a WPF SfChart, providing a practical reference to complement the steps outlined in this article.
+KB Article - [Link](https://support.syncfusion.com/agent/kb/17741).
+
+**Output:**
+
+![SampleOutput]("MultipleTrackballWPF\trackball demo.gif")
 
