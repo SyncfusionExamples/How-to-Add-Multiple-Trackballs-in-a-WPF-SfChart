@@ -132,5 +132,6 @@ KB Article - [Link](https://support.syncfusion.com/agent/kb/17741).
 
 **Output:**
 
-![SampleOutput]("MultipleTrackballWPF\trackball demo.gif")
+![trackball demo](https://github.com/user-attachments/assets/4aa5c4b7-4fac-4bc7-9d61-efa33899839d)
+
 
