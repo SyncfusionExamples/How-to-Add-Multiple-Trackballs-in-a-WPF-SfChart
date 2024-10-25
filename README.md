@@ -259,7 +259,7 @@ public class ChartTrackBallBehaviorExt : ChartTrackBallBehavior
 
 **Output:**
 
-![trackballDemo](https://github.com/user-attachments/assets/0a01c337-49a5-479b-b04f-1719eac9a37e)
+![trackballDemo.gif](https://github.com/user-attachments/assets/0a01c337-49a5-479b-b04f-1719eac9a37e)
 
 
 ## Troubleshooting
