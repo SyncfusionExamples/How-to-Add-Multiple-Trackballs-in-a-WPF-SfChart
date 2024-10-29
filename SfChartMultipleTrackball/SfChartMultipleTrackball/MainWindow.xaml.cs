@@ -51,36 +51,11 @@ namespace SfChartMultipleTrackball
         }
     }
 
-    public class Model
-    {
-        public string Day { get; set; }
-        public double CPULoad { get; set; }
-    }
-
-    public class ViewModel
-    {
-        public List<Model> Data { get; set; }
-
-        public ViewModel()
-        {
-            Data = new List<Model>
-            {
-                new Model { Day = "Monday", CPULoad = 35 },
-                new Model { Day = "Tuesday", CPULoad = 42 },
-                new Model { Day = "Wednesday", CPULoad = 18 },
-                new Model { Day = "Thursday", CPULoad = 30 },
-                new Model { Day = "Friday", CPULoad = 64 },
-                new Model { Day = "Saturday", CPULoad = 22 },
-                new Model { Day = "Sunday", CPULoad = 10 }
-            };
-        }
-    }
-
     public class ChartTrackBallBehaviorExt : ChartTrackBallBehavior
     {
         private bool isTrackballActive = false;
 
-        public SfChart SfChart { get; set; }
+        public SfChart? SfChart { get; set; }
 
         public double X { get; set; }
         public double Y { get; set; }
@@ -121,24 +96,27 @@ namespace SfChartMultipleTrackball
             isTrackballActive = false;
         }
 
-        private ChartTrackBallBehavior FindNearestTrackball(Point touchPoint)
+        private ChartTrackBallBehavior? FindNearestTrackball(Point touchPoint)
         {
-            ChartTrackBallBehavior nearestTrackball = null;
+            ChartTrackBallBehavior? nearestTrackball = null;
             double minDistance = double.MaxValue;
 
             // Iterate through all trackball behaviors to find the nearest one
-            foreach (var trackballBehaviour in SfChart.Behaviors)
+            if (SfChart != null)
             {
-                if (trackballBehaviour is ChartTrackBallBehaviorExt trackball)
+                foreach (var trackballBehaviour in SfChart.Behaviors)
                 {
-                    // Calculate the distance between the trackball and the touch point 
-                    double distance = Math.Sqrt(Math.Pow(trackball.X - touchPoint.X, 2) + Math.Pow(trackball.Y - touchPoint.Y, 2));
-
-                    // Update the nearest trackball if the current one is closer
-                    if (distance < minDistance)
+                    if (trackballBehaviour is ChartTrackBallBehaviorExt trackball)
                     {
-                        minDistance = distance;
-                        nearestTrackball = trackball;
+                        // Calculate the distance between the trackball and the touch point 
+                        double distance = Math.Sqrt(Math.Pow(trackball.X - touchPoint.X, 2) + Math.Pow(trackball.Y - touchPoint.Y, 2));
+
+                        // Update the nearest trackball if the current one is closer
+                        if (distance < minDistance)
+                        {
+                            minDistance = distance;
+                            nearestTrackball = trackball;
+                        }
                     }
                 }
             }
