@@ -169,7 +169,9 @@ public class ChartTrackBallBehaviorExt : ChartTrackBallBehavior
 } 
 ```
 
-**Step 5:** In the constructor of your MainWindow class, initialize the trackballs by setting their SfChart property to the chart defined in your XAML. This ensures that the trackballs are associated with the correct chart instance and accessible in other classes. Override the **OnContentRendered** method to run an asynchronous task that calls ShowTrackball(). Implement the **ShowTrackball** method to calculate positions and display the trackballs at load time using the Display method.
+**Step 5:** Assign the chart instance to the **SfChart** property in the **ChartTrackBallBehaviorExt** class, and override the **OnContentRendered** method to run the asynchronous task that calls **ShowTrackball** method.
+
+The **ShowTrackballMethod** method calculates the positions and displays the trackballs on the chart.
 
 C#
 
