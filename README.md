@@ -224,8 +224,7 @@ public partial class MainWindow : Window
 
 **Output:**
 
-![trackballDemo.gif](https://github.com/user-attachments/assets/0a01c337-49a5-479b-b04f-1719eac9a37e)
-
+![trackball_demo](https://github.com/user-attachments/assets/2d319594-8d8c-49f1-be27-5d9573b45344)
 
 ## Troubleshooting
 ### Path too long exception
