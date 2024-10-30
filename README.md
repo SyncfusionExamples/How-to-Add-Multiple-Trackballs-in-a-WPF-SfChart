@@ -230,4 +230,4 @@ public partial class MainWindow : Window
 ### Path too long exception
 If you are facing a path too long exception when building this example project, close Visual Studio and rename the repository to short and build the project.
 
-For more details, refer to the KB on [How to add multiple trackballs in a WPF SfChart?]().
+For more details, refer to the KB on [How to add multiple trackballs in a WPF SfChart?](https://support.syncfusion.com/kb/article/17741/how-to-add-multiple-trackballs-in-a-wpf-sfchart).
