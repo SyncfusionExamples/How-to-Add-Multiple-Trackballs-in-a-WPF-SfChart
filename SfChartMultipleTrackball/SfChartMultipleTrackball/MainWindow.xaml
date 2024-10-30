@@ -10,46 +10,88 @@
     
     <Grid>
 
-        <chart:SfChart x:Name="chart" Header="Server CPU load by Day">
+        <chart:SfChart x:Name="chart">
 
-            <chart:SfChart.PrimaryAxis>
-                <chart:CategoryAxis ShowTrackBallInfo="True"/>
-            </chart:SfChart.PrimaryAxis>
-
-            <chart:SfChart.SecondaryAxis>
-                <chart:NumericalAxis ShowTrackBallInfo="True" Minimum="0" Maximum="100"/>
-            </chart:SfChart.SecondaryAxis>
+            <chart:SfChart.Header>
+                <TextBlock FontSize="24" Text="Server CPU load by Day" FontWeight="DemiBold" Margin="5"/>
+            </chart:SfChart.Header>
 
             <chart:SfChart.Resources>
+                <DataTemplate x:Key="labelTemplate">
+                    <Border CornerRadius="3" Background="CornflowerBlue" Opacity="0.9" Margin="10" Height="40" Width="70">
+                        <TextBlock Foreground="White" Text="{Binding Path=ValueY, StringFormat='{}{0}%'}" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    </Border>
+                </DataTemplate>
+
+                <DataTemplate x:Key="axisLabelTemplate">
+                    <Border CornerRadius="10" Background="CornflowerBlue" Height="35" Width="130">
+                        <TextBlock Foreground="White" Text="{Binding Path=ValueX}" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    </Border>
+                </DataTemplate>
+
                 <Style TargetType="chart:ChartTrackBallControl" x:Key="trackballStyle1">
-                    <Setter Property="Background" Value="GreenYellow"/>
-                    <Setter Property="Height" Value="10"/>
-                    <Setter Property="Width" Value="10"/>
+                    <Setter Property="Background" Value="PaleGreen"/>
+                    <Setter Property="StrokeThickness" Value="2"/>
+                    <Setter Property="Height" Value="15"/>
+                    <Setter Property="Width" Value="15"/>
                 </Style>
                 <Style TargetType="Line" x:Key="lineStyle1">
-                    <Setter Property="Stroke" Value="Black"/>
-                    <Setter Property="StrokeThickness" Value="1.5"/>
+                    <Setter Property="Stroke" Value="SlateGray"/>
+                    <Setter Property="StrokeThickness" Value="2.5"/>
                 </Style>
 
                 <Style TargetType="chart:ChartTrackBallControl" x:Key="trackballStyle2">
-                    <Setter Property="Background" Value="Orange"/>
-                    <Setter Property="Height" Value="10"/>
-                    <Setter Property="Width" Value="10"/>
+                    <Setter Property="Background" Value="Yellow"/>
+                    <Setter Property="StrokeThickness" Value="2"/>
+                    <Setter Property="Height" Value="15"/>
+                    <Setter Property="Width" Value="15"/>
                 </Style>
                 <Style TargetType="Line" x:Key="lineStyle2">
-                    <Setter Property="Stroke" Value="Black"/>
-                    <Setter Property="StrokeThickness" Value="1.5"/>
+                    <Setter Property="Stroke" Value="DarkSlateGray"/>
+                    <Setter Property="StrokeThickness" Value="2.5"/>
                 </Style>
             </chart:SfChart.Resources>
 
+            <chart:SfChart.PrimaryAxis>
+                <chart:CategoryAxis ShowGridLines="False" 
+                                    ShowTrackBallInfo="True" 
+                                    TrackBallLabelTemplate="{StaticResource axisLabelTemplate}">
+                    <chart:CategoryAxis.LabelStyle>
+                        <chart:LabelStyle FontSize="18" FontFamily="Verdana"/>
+                    </chart:CategoryAxis.LabelStyle>
+                </chart:CategoryAxis>
+            </chart:SfChart.PrimaryAxis>
+
+            <chart:SfChart.SecondaryAxis>
+                <chart:NumericalAxis Minimum="0" 
+                                     Maximum="100" 
+                                     Interval="20" 
+                                     ShowTrackBallInfo="True">
+                    <chart:NumericalAxis.LabelStyle>
+                        <chart:LabelStyle FontSize="18" FontFamily="Verdana"/>
+                    </chart:NumericalAxis.LabelStyle>
+                </chart:NumericalAxis>
+            </chart:SfChart.SecondaryAxis>
+
             <chart:SfChart.Behaviors>
-                <local:ChartTrackBallBehaviorExt x:Name="trackball1" ChartTrackBallStyle="{StaticResource trackballStyle1}" UseSeriesPalette="True" LineStyle="{StaticResource lineStyle1}"/>
-                <local:ChartTrackBallBehaviorExt x:Name="trackball2" ChartTrackBallStyle="{StaticResource trackballStyle2}" UseSeriesPalette="True" LineStyle="{StaticResource lineStyle2}"/>
+                <local:ChartTrackBallBehaviorExt x:Name="trackball1" 
+                                                 ChartTrackBallStyle="{StaticResource trackballStyle1}"
+                                                 LineStyle="{StaticResource lineStyle1}">
+                </local:ChartTrackBallBehaviorExt>
+                <local:ChartTrackBallBehaviorExt x:Name="trackball2" 
+                                                 ChartTrackBallStyle="{StaticResource trackballStyle2}"
+                                                 LineStyle="{StaticResource lineStyle2}">
+                </local:ChartTrackBallBehaviorExt>
             </chart:SfChart.Behaviors>
 
-            <chart:LineSeries ItemsSource="{Binding Data}" XBindingPath="Day" YBindingPath="CPULoad" StrokeThickness="3" Interior="OrangeRed">
+            <chart:LineSeries ItemsSource="{Binding Data}" 
+                              XBindingPath="Day" 
+                              YBindingPath="CPULoad" 
+                              StrokeThickness="3.5" 
+                              Interior="OrangeRed"
+                              TrackBallLabelTemplate="{StaticResource labelTemplate}">
                 <chart:LineSeries.AdornmentsInfo>
-                    <chart:ChartAdornmentInfo Symbol="Ellipse" SymbolInterior="White" SymbolStroke="OrangeRed"/>
+                    <chart:ChartAdornmentInfo Symbol="Ellipse" SymbolInterior="White" SymbolStroke="OrangeRed" SymbolHeight="15" SymbolWidth="15"/>
                 </chart:LineSeries.AdornmentsInfo>
             </chart:LineSeries>
 
